@@ -1,0 +1,17 @@
+[package]
+name = "rptb"
+version = "0.1.0"
+authors = ["Valeriy Kostikov <mkoctuk@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dotenv = "0.15"
+tgbot = "0.4"
+env_logger = "0.7"
+log = "0.4"
+futures = "0.1"
+tokio = "0.1"
+tempfile = "3.1"
+failure = "0.1"
