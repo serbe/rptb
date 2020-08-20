@@ -8,8 +8,6 @@ pub type Result<T> = result::Result<T, Error>;
 pub enum Error {
     #[error("RuTel error")]
     RuTel(#[from] rutel::error::Error),
-    #[error("json error")]
-    JSON(#[from] serde_json::Error),
-    #[error("RPC error")]
-    RPC(#[from] rpc::error::Error),
+    // #[error("json error")]
+    // JSON(#[from] serde_json::Error),
 }
