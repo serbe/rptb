@@ -2,11 +2,11 @@ use std::time::Duration;
 
 use dotenv::dotenv;
 use tokio::runtime::Runtime;
-use tokio::time::delay_for;
+use tokio::time::sleep;
 // use rutel::bot::;
 // use serde_json::{from_value, Value, from_slice};
 use rutel::bot::{Bot, GetMe, GetUpdates, SendMessage};
-use rutel::types::{ChatID};
+use rutel::types::ChatID;
 // use bytes::BufMut;
 
 use crate::error::Result;
@@ -26,7 +26,7 @@ async fn run() -> Result<()> {
     let gu = GetUpdates::new();
     let msg = b.get_updates(&gu).await?;
     log::info!("msg : {:?}", msg);
-    delay_for(Duration::from_millis(100)).await;
+    sleep(Duration::from_millis(100)).await;
     Ok(())
 }
 
@@ -34,7 +34,7 @@ fn main() {
     dotenv().ok();
     env_logger::init();
 
-    let mut rt = Runtime::new().unwrap();
+    let rt = Runtime::new().unwrap();
 
     rt.block_on(async { run().await.unwrap() });
 }
