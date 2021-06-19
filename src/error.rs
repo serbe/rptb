@@ -1,10 +1,10 @@
-use std::result;
+// use std::result;
 
-use thiserror::Error;
+// use thiserror::Error;
 
-pub type Result<T> = result::Result<T, Error>;
+// pub type Result<T> = result::Result<T, Error>;
 
-#[derive(Error, Debug)]
+#[derive(thiserror::Error, Debug)]
 pub enum Error {
     #[error("RuTel error")]
     RuTel(#[from] rutel::error::Error),
