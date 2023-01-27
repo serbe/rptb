@@ -1,6 +1,6 @@
-use std::time::Duration;
 use std::process::Command;
 use std::str;
+use std::time::Duration;
 
 // use dotenv::dotenv;
 use tokio::runtime::Runtime;
@@ -29,23 +29,21 @@ async fn run() -> Result<(), Error> {
     // let msg = b.get_updates(&gu).await?;
     // log::info!("msg : {:?}", msg);
 
-    
-
     let output = if cfg!(target_os = "windows") {
         Command::new("cmd")
-                .args(&["/C", "echo hello"])
-                .output()
-                .expect("failed to execute process")
+            .args(["/C", "echo hello"])
+            .output()
+            .expect("failed to execute process")
     } else {
         Command::new("pacman")
-                .arg("-Qu")
-                .output()
-                .expect("failed to execute process")
+            .arg("-Qu")
+            .output()
+            .expect("failed to execute process")
     };
-    
+
     let out = output.stdout;
 
-    println!("{:?}", out);
+    println!("{out:?}");
     println!("{:?}", str::from_utf8(&out));
 
     sleep(Duration::from_millis(100)).await;
